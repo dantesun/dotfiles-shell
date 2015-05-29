@@ -41,6 +41,11 @@ alias cp='cp -i'
 alias rm='rm -i'
 alias tmux='tmux -2'
 
+infocmp rxvt-unicode-256color 2>&1 > /dev/null || {
+  [ -d ~/.terminfo ] || mkdir ~/.terminfo
+  tic -o ~/.terminfo ~/tools/rxvt-unicode-256color.terminfo
+}
+
 [[ -f $HOME/.bash_functions ]] && . $HOME/.bash_functions
 
 #Solarized Theme
