@@ -54,3 +54,5 @@ fi
 # A file for customization of environment
 [[ -f "$HOME/.bash_custom" ]] && source  "$HOME/.bash_custom"
 
+HOMESHRICK="$HOME/.homesick/repos/homeshick/homeshick.sh"
+[[ -f $HOMESHRICK ]] && source $HOMESHRICK
