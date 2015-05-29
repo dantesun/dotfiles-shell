@@ -1,16 +1,24 @@
-# this configuration file is suitable for displaying kernel log files
-
-
-# example of text substitution
-#regexp=\bda?emon
-#replace=angel
-#colours=red
-#======
-# example of text substitution
-#regexp=(\d\d):(\d\d):(\d\d)
-#replace=\1h\2m\3s
-#======
-
+# this configuration file is suitable for displaying php error log files
+regexp=\] PHP [^\s]+ error:
+colours=on_red
+count=once
+======
+regexp=\] PHP Notice:
+colours=on_yellow black
+count=once
+======
+regexp=\] PHP Warning:
+colours=on_cyan
+count=once
+======
+regexp=(PHP )?Stack trace:
+colours=on_green
+count=once
+======
+regexp=] PHP [ \d]{2}\d\.
+colours=on_green
+count=once
+======
 # display this line in yellow and stop further processing
 regexp=.*last message repeated \d+ times$
 colours=yellow
@@ -50,4 +58,16 @@ count=more
 regexp=connect
 colours=on_red
 count=more
+======
+regexp=not found or unable to stat
+colours=black
+count=block
+======
+regexp=File does not exist
+colours=italic black
+count=block
+======
+regexp=^\[
+colours=default
+count=unblock
 
