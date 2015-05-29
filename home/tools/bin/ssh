@@ -1,0 +1,39 @@
+#!/bin/bash
+ssh() {
+    TMPDIR=~/tmp
+    case "$(uname -s)" in
+        CYGWIN_NT* | Linux)
+            tmp_fifo=$(mktemp -u --suffix=._ssh_fifo)
+            ;;
+        Darwin)
+            tmp_fifo=$(/usr/bin/mktemp -u -t ._ssh_fifo)
+            ;;
+        *)
+            tmp_fifo=
+            ;;
+    esac
+    SSH="/usr/bin/ssh"
+    if ! [ -x $SSH ]; then
+      echo "ssh is not found in PATH!"
+      exit 1
+    fi
+    if cmmand -v sshpass &> /dev/null && [ -r ~/.ssh/ssh_pass ]; then
+      HOST=$1
+      PASSWORD=$(awk "/$HOST/ {print \$2}" ~/.ssh/ssh_pass)
+      if ! [ -z $PASSWORD ]; then
+        SSH="sshpass -p $PASSWORD $SSH"
+      fi
+    fi
+
+    if [ -z $tmp_fifo ]; then
+      $SSH -F "$tmp_fifo" "$@"
+    else
+      mkfifo "$tmp_fifo"
+      trap "rm -f $tmp_fifo" EXIT
+      cat ~/.ssh/config ~/.ssh/config.* >"$tmp_fifo" 2>/dev/null &
+      $SSH -F "$tmp_fifo" "$@"
+    fi
+
+}
+
+ssh $*
