@@ -6,6 +6,9 @@ if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
+HOMESHRICK="$HOME/.homesick/repos/homeshick/homeshick.sh"
+[[ -f $HOMESHRICK ]] && source $HOMESHRICK
+
 # Make Bash append rather than overwrite the history on disk
 shopt -s histappend
 export CDPATH=".:..:../..:~:~/fusion.tsoft/fusion/components/services"
@@ -51,6 +54,8 @@ infocmp rxvt-unicode-256color 2>&1 > /dev/null || {
 #Solarized Theme
 [[ -f $HOME/.dircolors ]] && eval `dircolors $HOME/.dircolors`
 
+[[ -f $HOME/tools/grc/grc.bashrc ]] && source $HOME/tools/grc/grc.bashrc 
+
 #Fix the Java AWT problem
 if which wmname &> /dev/null; then
   [[ -z $DISPLAY ]] || wmname LG3D
@@ -59,5 +64,3 @@ fi
 # A file for customization of environment
 [[ -f "$HOME/.bash_custom" ]] && source  "$HOME/.bash_custom"
 
-HOMESHRICK="$HOME/.homesick/repos/homeshick/homeshick.sh"
-[[ -f $HOMESHRICK ]] && source $HOMESHRICK
