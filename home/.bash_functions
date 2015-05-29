@@ -78,7 +78,3 @@ PROMPT_COMMAND=bash_prompt_command
 bash_prompt
 unset bash_prompt
 wiki() { dig +short txt $1.wp.dg.cx; }
-github_down () 
-{ 
-    wget -O ${1#*/}.zip https://github.com/$1/archive/master.zip
-}
