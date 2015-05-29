@@ -1,1 +1,1 @@
-/Users/dsun/.zprezto/runcoms/zlogin
+.zprezto/runcoms/zlogin
