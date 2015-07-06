@@ -30,6 +30,6 @@ colours=yellow
 count=once
 ======
 regexp=com\.qunar\.[a-z][a-z0-9_]*(\.[a-z0-9A-Z_]+)+[0-9a-zA-Z_]
-colours=yellow
+colours=magenta
 count=once
 
