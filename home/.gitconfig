@@ -1,4 +1,7 @@
-#[http]
-#	proxy = socks5://127.0.0.1:1080
+[http]
+	proxy = socks5://127.0.0.1:1080
+; [user]
+;   name = dante.sun@gmail.com
 [user]
-	name = dante.sun@gmail.com
+	name = Dante Sun
+	email = dante.sun@gmail.com

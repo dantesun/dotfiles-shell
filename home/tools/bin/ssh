@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 ssh() {
     TMPDIR=~/tmp
     case "$(uname -s)" in
